@@ -1,0 +1,98 @@
+<%= form_with(model: lead, local: true) do |form| %>
+<!-- CONTACT -->
+
+    <header class="text-center mb-60">
+        <h2>Contact Us Today</h2>
+        <hr />
+    </header>
+
+    <!-- Alert Success -->
+    <div id="alert_success" class="alert alert-success mb-30">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Thank You!</strong> Your message successfully sent!
+    </div>
+
+    <!-- Alert Failed -->
+    <div id="alert_failed" class="alert alert-danger mb-30">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>[SMTP] Error!</strong> Internal server error!
+    </div>
+
+    <!-- Alert Mandatory -->
+    <div id="alert_mandatory" class="alert alert-danger mb-30">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+    </div>
+
+    <!-- RECAPCHA -->
+        <%= content_for :recaptcha_js do %>
+            <%= include_recaptcha_js %>
+        <% end %>
+        <!-- /RECAPCHA -->
+    
+        <fieldset>
+            <input type="hidden" name="action" value="contact_send" />
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="name">Full Name *</label>
+                    <%= form.text_field :full_name, class: "form-control", :required => true %>
+                </div>
+                <div class="col-md-4">
+                    <label for="email">E-mail Address *</label>
+                    <%= form.text_field :email, class: "form-control", :required => true %>
+                </div>
+                <div class="col-md-4">
+                    <label for="phone">Phone</label>
+                    <%= form.text_field :phone, class: "form-control" %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="company_name">Company Name *</label>
+                    <%= form.text_field :company_name, class: "form-control", :required => true %>
+                </div>
+                <div class="col-md-6">
+                    <label for="project_name">Project Name *</label>
+                    <%= form.text_field :project_name, class: "form-control", :required => true %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="project_description">Project Description *</label>
+                    <%= form.text_field :project_description, class:"form-control", :required => true %>
+                </div>
+                <div class="col-md-6">
+                    <label for="department">Department </label>
+                    <%= form.select :department_in_charge_of_elevators, ['---Select---', 'Commercial', 'Residential'], {},class:"form-control pointer required", name: "contact[department]", id: "department" %>  
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-12">
+                        <label for="message">Message *</label>
+                        <%= form.text_area :message, rows: "8", class: "form-control", :required => true %>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="attachment">File Attachment</label>
+                        <%= form.file_field :attached_file_stored_as_binary, type:"file", class: "custom-file-upload", :data => {"btn-text" => "Select a File"}%>
+                    <small class="text-muted block">
+                        Max file size: 10Mb (zip/pdf/jpg/png)
+                    </small>
+                </div>
+            </div>
+        </fieldset>
+
+
+        <%= recaptcha_action('checkout') %>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="actions">
+                    <%= form.submit "SEND MESSAGE", class: "btn btn-primary btn-lg" %>
+                </div>
+            </div>
+        </div>
+
+<% end %>
+<!-- /FORM -->
