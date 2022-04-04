@@ -1,0 +1,58 @@
+<!-- TOP NAVIGATION -->
+<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
+    <% if user_signed_in? %>
+        <section class="page-header page-header-xs parallax parallax-2" style="background-color: #0A65A0; padding-top: 5px; padding-bottom: 5px;">
+            <div class="container">
+                <h1 class="float-right" style="text-shadow:rgb(0 0 0 / 30%) 3px 3px 3px;"><strong>Welcome! <%= current_user.first_name %> <%= current_user.last_name %> </strong></h1>
+            </div>
+        </section>
+    <% end %>
+
+    <header id="topNav">
+        <div class="container">
+            <!-- Mobile Menu Button -->
+            <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
+            <a><%= link_to image_tag("rocketElevators/rocketLogo.png"), root_path, class:"logo float-left scrollTo" %></a>
+            
+            <div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+                <nav class="nav-main">
+                    <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+                        <li><%= link_to "HOME", root_path(anchor: 'top')%></li>
+                        <li class="dropdown">
+                            <%= link_to "SERVICES", root_path(anchor: 'services'), class: "dropdown-toggle"%>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown"><%= link_to "RESIDENTIAL", residential_path %></li>
+                                <li class="dropdown"><%= link_to "COMMERCIAL", commercial_path %></li>
+                                <li class="dropdown"><%= link_to "PORTFOLIO", root_path(anchor: 'portfolio') %></li>
+                            </ul>
+                        </li>
+                        <li><%= link_to "NEWS", root_path(anchor: 'news') %></li>
+                        <li><%= link_to "CLIENTS", root_path(anchor: 'clients') %></li>
+                        <li><%= link_to "QUOTE", quotes_path %></li>
+                        <li><%= link_to "CONTACT", root_path(anchor: 'contact') %></li>
+                        
+                        <% if current_user %>
+                            <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
+                            <% if Employee.where(user_id: current_user.id).exists? %>
+                                <li><%= link_to "ADMIN", rails_admin_path %></li>
+                                <%# <button onclick="pollyGreet()" class="btn btn-danger">
+                                    <strong>BRIEFING</strong>
+                                </button>
+                                <%= audio_tag "greetings.mp3", id: "greetings" %>
+                            <% end %>
+                        <% else %>
+                            <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+                            <li><%= link_to "SIGN IN", new_user_session_path %></li>
+                        <% end %>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+<!-- TOP NAV -->
+</div>
+
