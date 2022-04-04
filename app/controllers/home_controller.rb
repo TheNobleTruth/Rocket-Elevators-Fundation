@@ -11,4 +11,7 @@ class HomeController < ApplicationController
     def quote
     end
 
+    def intervention
+    end
+
 end

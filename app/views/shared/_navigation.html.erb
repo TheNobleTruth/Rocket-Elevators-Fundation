@@ -36,6 +36,7 @@
                         <li><%= link_to "CONTACT", root_path(anchor: 'contact') %></li>
                         
                         <% if current_user %>
+                            <li><%= link_to "INTERVENTION", interventions_path %></li>
                             <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
                             <% if Employee.where(user_id: current_user.id).exists? %>
                                 <li><%= link_to "ADMIN", rails_admin_path %></li>
