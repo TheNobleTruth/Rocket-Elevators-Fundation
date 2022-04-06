@@ -150,7 +150,7 @@ $(document).ready(function () {
         companyName_field.setAttribute("value", "");
         userEmail_field.setAttribute("value", "");
     }
-
+à
     function displayBuildingFields(buildingType) {
         estimateNumElv_div.style.display = "block";
         estimateNumElv_div.querySelector(".step-description").style.display =

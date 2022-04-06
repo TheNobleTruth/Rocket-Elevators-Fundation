@@ -1,0 +1,180 @@
+
+<!-- PAGE HEADER BREADCRUMBS -->
+<section class="page-header page-header-xs parallax parallax-3" style="background-image:url(<%= asset_path 'rocketElevators/imgpattern2.jpg' %>)">
+  <div class="overlay dark-2"></div>
+    <div class="container">
+        <h1 style="text-shadow:rgb(0 0 0 / 30%) 3px 3px 5px"><strong>New intervention call</strong></h1>
+        <ol class="breadcrumb">
+            <li><a id="rockets-home" href="index.html">Home</a></li>
+  
+        </ol>
+    </div>
+</section>
+<!-- /PAGE HEADER BREADCRUMS -->
+
+<!-- FORM -->
+<section>
+    <div class="container">
+      <%= form_with(model: intervention, local: true) do |form| %>
+        <% if intervention.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+
+            <ul>
+            <% intervention.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+    
+
+  <!-- Author -->
+  <%= "Hi #{@actualuser}, fill your intervention here!" %>
+  <br>
+  
+  <!-- customer -->
+             
+
+              <div class="card card-default">
+                <div class="card-heading card-heading-transparent">
+                    <label for="building-type" class="card-title"> 
+                        <h3>
+                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 1 |</span> Select customer
+                        </h3> 
+                    </label>
+                </div>
+                <div class="card-block" style="margin: 20px">
+               
+
+                    <%= form.select(:customerID) do %>
+                          <% @customer.each do |l| -%>
+                           <%= content_tag(:option, l.company_name, value: l.id) %>
+                       <% end %>
+                    <% end %>              
+                </div>
+            </div>
+  <!-- building -->
+            <div class="card card-default">
+                <div class="card-heading card-heading-transparent">
+                    <label for="building-type" class="card-title"> 
+                        <h3>
+                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 2 |</span> Select Building
+                        </h3> 
+                    </label>
+                </div>
+                <div class="card-block" style="margin: 20px">
+               
+                      <%= form.select(:buildingID) do %>
+                          <% @building.each do |l| -%>
+                           <%= content_tag(:option, l.id, value: l.id) %>
+                       <% end %>
+                    <% end %>
+                </div>
+            </div>
+  
+  <!-- battery -->
+              <div class="card card-default">
+                <div class="card-heading card-heading-transparent">
+                    <label for="building-type" class="card-title"> 
+                        <h3>
+                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 3 |</span> Select Battery
+                        </h3> 
+                    </label>
+                </div>
+                <div class="card-block" style="margin: 20px">
+               
+                      <%= form.select(:batteryID) do %>
+                          <% @battery.each do |l| -%>
+                           <%= content_tag(:option, l.id, value: l.id) %>
+                       <% end %>
+                    <% end %>
+                </div>
+            </div>
+  <!-- column -->
+            <div class="card card-default">
+                <div class="card-heading card-heading-transparent">
+                    <label for="building-type" class="card-title"> 
+                        <h3>
+                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 4 |</span> Select Column
+                        </h3> 
+                    </label>
+                </div>
+                <div class="card-block" style="margin: 20px">
+               
+                      <%= form.select(:columnID) do %>
+                          <% @column.each do |l| -%>
+                           <%= content_tag(:option, l.id, value: l.id) %>
+                       <% end %>
+                    <% end %>
+                </div>
+            </div>
+  <!-- elevator -->
+              <div class="card card-default">
+                <div class="card-heading card-heading-transparent">
+                    <label for="building-type" class="card-title"> 
+                        <h3>
+                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 5 |</span> Select Elevator
+                        </h3> 
+                    </label>
+                </div>
+                <div class="card-block" style="margin: 20px">
+               
+                      <%= form.select(:elevatorID) do %>
+                          <% @elevator.each do |l| -%>
+                           <%= content_tag(:option, l.id, value: l.id) %>
+                       <% end %>
+                    <% end %>
+                </div>
+            </div>
+  <!-- employee -->
+            <div class="card card-default">
+                <div class="card-heading card-heading-transparent">
+                    <label for="building-type" class="card-title"> 
+                        <h3>
+                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 6 |</span> Whats your ID?
+                        </h3> 
+                    </label>
+                </div>
+                <div class="card-block" style="margin: 20px">
+               
+                      <%= form.select :employeeID, :selected => "None" do %>
+                          <% @employee.each do |l| -%>
+                           <%= content_tag(:option, l.id, value: l.id) %>
+                       <% end %>
+                    <% end %>
+                </div>
+            </div>
+  <!-- start date and time | Don't show -->
+  <!-- end date and time | Don't show -->
+  <!-- result | Don't show -->
+
+  <!-- report -->
+            <div class="card card-default">
+                <div class="card-heading card-heading-transparent">
+                    <label for="building-type" class="card-title"> 
+                        <h3>
+                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 6 |</span> Report
+                        </h3> 
+                    </label>
+                </div>
+                <div class="card-block" style="margin: 20px">
+                      
+                        
+
+                    <%= form.text_area(:report, size: '50x10') %>
+
+                </div>
+            </div>
+  <!-- status | Don't show -->
+
+
+
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+</section>
+<!-- FORM -->
