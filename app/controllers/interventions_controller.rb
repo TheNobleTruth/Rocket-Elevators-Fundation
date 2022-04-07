@@ -21,6 +21,8 @@ class InterventionsController < ApplicationController
     @elevator = Elevator.all
     @employee = Employee.all
 
+
+    
     @actualuser = current_user.first_name + " " + current_user.last_name
 
 

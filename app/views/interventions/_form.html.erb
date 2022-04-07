@@ -29,12 +29,9 @@
         <% end %>
     
 
-  <!-- Author -->
-  <%= "Hi #{@actualuser}, fill your intervention here!" %>
-  <br>
-  
   <!-- customer -->
              
+
 
               <div class="card card-default">
                 <div class="card-heading card-heading-transparent">
@@ -132,14 +129,14 @@
                 <div class="card-heading card-heading-transparent">
                     <label for="building-type" class="card-title"> 
                         <h3>
-                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 6 |</span> Whats your ID?
+                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 6 |</span> Whats the employee ID?
                         </h3> 
                     </label>
                 </div>
                 <div class="card-block" style="margin: 20px">
                
-                      <%= form.select :employeeID, :selected => "None" do %>
-                          <% @employee.each do |l| -%>
+                      <%= form.select :employeeID, :include_blank => "None" do %>
+                           <% @employee.each do |l| -%>
                            <%= content_tag(:option, l.id, value: l.id) %>
                        <% end %>
                     <% end %>
@@ -154,24 +151,29 @@
                 <div class="card-heading card-heading-transparent">
                     <label for="building-type" class="card-title"> 
                         <h3>
-                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 6 |</span> Report
+                            <span style="color:rgb(10, 101, 160); font-weight:bolder">STEP 7 |</span> Report
                         </h3> 
                     </label>
                 </div>
                 <div class="card-block" style="margin: 20px">
-                      
-                        
-
+                    
                     <%= form.text_area(:report, size: '50x10') %>
 
                 </div>
             </div>
   <!-- status | Don't show -->
 
-
+              <!-- Author -->
+            <%= "This form has been fill by " %>
+            <div>
+                <br>
+                <%= form.text_field(:author, :readonly=>true, :value=>@actualuser) %>     
+                <br>
+            <div>
 
 
       <div class="actions">
+        <br>
         <%= form.submit %>
       </div>
     <% end %>
