@@ -46,7 +46,7 @@
 
                     <%= form.select(:customerID) do %>
                           <% @customer.each do |l| -%>
-                           <%= content_tag(:option, l.company_name, value: l.id) %>
+                           <%= content_tag(:option, l.company_name, value: l.company_name) %>
                        <% end %>
                     <% end %>              
                 </div>

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "commercial",  to: "home#commercial"
   get "residential", to: "home#residential"
   get "interventions", to: "interventions#interventions"
-
+  get "get_"
   resources :synthesized_messages
   
 end
