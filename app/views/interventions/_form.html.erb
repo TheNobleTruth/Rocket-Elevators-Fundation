@@ -27,13 +27,12 @@
             </ul>
           </div>
         <% end %>
-    
-
-  <!-- customer -->
-             
 
 
-              <div class="card card-default">
+      <!-- customer -->
+              
+
+                    <div class="card card-default">
                 <div class="card-heading card-heading-transparent">
                     <label for="building-type" class="card-title"> 
                         <h3>
@@ -42,17 +41,25 @@
                     </label>
                 </div>
                 <div class="card-block" style="margin: 20px">
-               
 
-                    <%= form.select(:customerID) do %>
-                          <% @customer.each do |l| -%>
-                           <%= content_tag(:option, l.company_name, value: l.company_name) %>
-                       <% end %>
-                    <% end %>              
+      <select style="max-width: 150px;" id="customer_select" <%= form.select(:customerID) do %>  >
+        <option selected>Customer</option>
+            <%= @customer.each do |c| %>
+        <option value="<%= c.id %>"><%= c.company_name %></option>
+            <% end %>
+        <% end %>  
+      </select> 
                 </div>
             </div>
+      
+
+
+
+             
+      
   <!-- building -->
-            <div class="card card-default">
+
+              <div class="card card-default">
                 <div class="card-heading card-heading-transparent">
                     <label for="building-type" class="card-title"> 
                         <h3>
@@ -60,17 +67,28 @@
                         </h3> 
                     </label>
                 </div>
-                <div class="card-block" style="margin: 20px">
-               
-                      <%= form.select(:buildingID) do %>
-                          <% @building.each do |l| -%>
-                           <%= content_tag(:option, l.id, value: l.id) %>
-                       <% end %>
-                    <% end %>
+                <div class="card-block" style="margin: 20px"> 
+
+
+      <select style="max-width: 150px;" id="building_select" class="custom-select mb-0 mr-sm-0 mb-sm-0" <%= form.select(:buildingID) do %>  >
+        <option selected>Building</option>
+            <%= @building.each do |b| %>
+        <option value="<%= b.id %>"><%= b.id %></option>
+            <% end %>
+        <% end %>  
+      </select> 
+
+
+
                 </div>
             </div>
+
+
+
+            
   
   <!-- battery -->
+
               <div class="card card-default">
                 <div class="card-heading card-heading-transparent">
                     <label for="building-type" class="card-title"> 
@@ -80,16 +98,21 @@
                     </label>
                 </div>
                 <div class="card-block" style="margin: 20px">
-               
-                      <%= form.select(:batteryID) do %>
-                          <% @battery.each do |l| -%>
-                           <%= content_tag(:option, l.id, value: l.id) %>
-                       <% end %>
-                    <% end %>
-                </div>
+
+      <select style="max-width: 150px;" id="battery_select" class="custom-select mb-0 mr-sm-0 mb-sm-0" <%= form.select(:batteryID) do %>  >
+        <option selected>Battery</option>
+            <%= @battery.each do |b| %>
+        <option value="<%= b.id %>"><%= b.id %></option>
+            <% end %>
+        <% end %>  
+      </select> 
+                      </div>
             </div>
+
+
+              
   <!-- column -->
-            <div class="card card-default">
+              <div class="card card-default">
                 <div class="card-heading card-heading-transparent">
                     <label for="building-type" class="card-title"> 
                         <h3>
@@ -98,16 +121,21 @@
                     </label>
                 </div>
                 <div class="card-block" style="margin: 20px">
-               
-                      <%= form.select(:columnID) do %>
-                          <% @column.each do |l| -%>
-                           <%= content_tag(:option, l.id, value: l.id) %>
-                       <% end %>
-                    <% end %>
-                </div>
+      <select style="max-width: 150px;" id="column_select" class="custom-select mb-0 mr-sm-0 mb-sm-0" <%= form.select(:columnID) do %>  >
+        <option selected>Column</option>
+            <%= @column.each do |b| %>
+        <option value="<%= b.id %>"><%= b.id %></option>
+            <% end %>
+        <% end %>  
+      </select> 
+                      </div>
             </div>
+    
+
+            
   <!-- elevator -->
-              <div class="card card-default">
+
+                  <div class="card card-default">
                 <div class="card-heading card-heading-transparent">
                     <label for="building-type" class="card-title"> 
                         <h3>
@@ -116,14 +144,18 @@
                     </label>
                 </div>
                 <div class="card-block" style="margin: 20px">
-               
-                      <%= form.select(:elevatorID) do %>
-                          <% @elevator.each do |l| -%>
-                           <%= content_tag(:option, l.id, value: l.id) %>
-                       <% end %>
-                    <% end %>
-                </div>
+
+      <select style="max-width: 150px;" id="elevator_select" class="custom-select mb-0 mr-sm-0 mb-sm-0" <%= form.select(:elevatorID) do %>  >
+        <option selected>Elevator</option>
+            <%= @elevator.each do |b| %>
+        <option value="<%= b.id %>"><%= b.id %></option>
+            <% end %>
+        <% end %>  
+      </select> 
+                      </div>
             </div>
+
+              
   <!-- employee -->
             <div class="card card-default">
                 <div class="card-heading card-heading-transparent">

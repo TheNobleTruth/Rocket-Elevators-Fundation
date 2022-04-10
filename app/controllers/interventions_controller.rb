@@ -140,8 +140,6 @@ class InterventionsController < ApplicationController
             headers: {"Content-Type" => "application/json"},
           )
 
-      
-
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @intervention.errors, status: :unprocessable_entity }
       end
@@ -171,6 +169,33 @@ class InterventionsController < ApplicationController
     end
   end
 
+  def get_building_by_customer
+    @building = Building.where("customer_id = ?", params[:customer_id])
+    respond_to do |format|
+        format.json { render :json => @building }
+    end
+  end
+
+  def get_battery_by_building
+    @battery = Battery.where("building_id = ?", params[:building_id])
+    respond_to do |format|
+        format.json { render :json => @battery }
+    end
+  end
+
+  def get_column_by_battery
+    @column = Column.where("battery_id = ?", params[:battery_id])
+    respond_to do |format|
+        format.json { render :json => @column }
+    end
+  end
+
+  def get_elevator_by_column
+    @elevator = Elevator.where("column_id = ?", params[:column_id])
+    respond_to do |format|
+        format.json { render :json => @elevator }
+    end
+  end
 
 
   private

@@ -17,7 +17,19 @@ Rails.application.routes.draw do
   get "commercial",  to: "home#commercial"
   get "residential", to: "home#residential"
   get "interventions", to: "interventions#interventions"
-  get "get_"
-  resources :synthesized_messages
   
+  resources :synthesized_messages
 end
+  
+  #Dropdown dynamic menu
+
+  Rails.application.routes.draw do
+
+    resources :testing_buttons
+    get 'get_building_by_customer/:customer_id', to: 'interventions#get_building_by_customer'  
+    get 'get_battery_by_building/:building_id', to: 'interventions#get_battery_by_building'  
+    get 'get_column_by_battery/:battery_id', to: 'interventions#get_column_by_battery' 
+    get 'get_elevator_by_column/:column_id', to: 'interventions#get_elevator_by_column'  
+    get '/building_search' => 'application#building_search'
+  
+   end
