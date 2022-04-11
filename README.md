@@ -8,7 +8,7 @@
 - [Credits](#credits)
 
 ## Project Description
-The main purpose of this repository is to add new functionnalities to the back office employee by giving them the option to (1) call a new intervention on a specific elevator, (2) to inform properly the right person by the help of an API and (3) a REST API.
+The main purpose of this repository is to add new functionnalities to the back office employee by giving them the option to (1) call a new intervention on a specific elevator, (2) to inform properly the right person by the help of an API and (3) the build up of a REST API.
 
 ## Application Requirements
 

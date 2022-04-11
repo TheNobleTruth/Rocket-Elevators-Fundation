@@ -18,7 +18,7 @@ $(function() {
         var id_value_string = $(this).val();
         // ... If this value is empty
         if (id_value_string == "") {
-            console.log("If customer id value string == '' ")
+            console.log("If customer id value == '' ")
             // .. Remove 
             $("#building_select option").remove();
             //
@@ -108,7 +108,7 @@ $(function() {
 
 // column function----------------------------------------
 $(function() {
-    console.log("Patate2");
+
 
     if ($("#battery_select").val() == "") {
         $("#column_select option").remove();
@@ -117,17 +117,17 @@ $(function() {
     }
 
     $("#battery_select").change(function() {
-        // console.log("yOyO-----------------------");
+
         var id_value_string = $(this).val();
         if (id_value_string == "") {
             $("#column_select option").remove();
             var row = "<option value=\"" + "" + "\">" + "Column" + "</option>";
             $(row).appendTo("#column_select");
-            // console.log("goooooooooooood2222222");
+
         } else {
-            // Send the request and update building dropdown
-            console.log("###########################");
-            console.log(id_value_string);
+      
+            console.log("Get into the else");
+     
             $.ajax({
                 dataType: "json",
                 cache: false,
@@ -140,7 +140,7 @@ $(function() {
             success: function(data) {
                 // Clear all options from building select
                 $("#column_select option").remove();
-                // console.log("mucho gooooooooddddddd");
+
         //put in a empty default line
         var row = "<option value=\"" + "" + "\">" + "Column" + "</option>";
         $(row).appendTo("#column_select");
@@ -148,7 +148,7 @@ $(function() {
         $.each(data, function(i, j) {
         row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
         $(row).appendTo("#column_select");
-        console.log('FUNCTION 3');
+
         });
        }
       });
@@ -173,8 +173,7 @@ $(function() {
             $(row).appendTo("#elevator_select");
         } else {
             // Send the request and update building dropdown
-            console.log("###########################");
-            console.log(id_value_string);
+
             $.ajax({
                 dataType: "json",
                 cache: false,
@@ -187,7 +186,7 @@ $(function() {
             success: function(data) {
                 // Clear all options from building select
                 $("#elevator_select option").remove();
-                // console.log("mucho gooooooooddddddd");
+
         //put in a empty default line
         var row = "<option value=\"" + "" + "\">" + "Elevator" + "</option>";
         $(row).appendTo("#elevator_select");
